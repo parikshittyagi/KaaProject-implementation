@@ -1,0 +1,49 @@
+Prerequisites:
+    You should have made application on local host before such that sdk can be produced of whatever
+    language we want.
+
+
+Steps => These steps are to build kaa application for Linux machine
+
+1. Create directories for your build structure. For example, you can create the following directories:
+    mkdir my-kaa-application
+    mkdir my-kaa-application/kaa
+    mkdir my-kaa-application/src
+    cd my-kaa-application
+
+2. Generate C SDK and unpack it to the my-kaa-application/kaa directory.
+
+3. In my-kaa-application/src directory, create a kaa-application.c file that will contain the application code.
+
+4. In application.c file you will have to write the logic what ever you want to do.
+
+5. Create a CMakeLists.txt file in the my-kaa-application directory. It is a top-level CMake file handling the application build.
+    See the full CMakeLists.txt code below.
+
+/*  cmake_minimum_required(VERSION 2.8.12)
+    project(kaa-application C)
+   
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99 -g -Wall -Wextra")
+   
+    add_subdirectory(kaa)
+   
+    add_executable(kaa-app src/kaa-application.c)
+    target_link_libraries(kaa-app kaac)  */
+
+6.  Now your directory structure should look like this.
+    - my-kaa-application
+        - CMakeLists.txt
+        - kaa
+            - Unpacked C SDK
+        - src
+            - kaa-application.c
+
+7.  Finally, you can build the application. Create a build directory.
+
+8.  Configure the build via CMake and run the make command.
+    Commnds=> * cmake -DKAA_MAX_LOG_LEVEL=3 -DBUILD_TESTING=OFF ..
+              * make
+
+9.  Run your application
+    * ./kaa-app
+

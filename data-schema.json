@@ -1,0 +1,12 @@
+{
+     "type": "record",
+     "name": "DataCollection",
+     "namespace": "org.kaaproject.kaa.schema.mysample",
+     "fields": [
+         {
+             "name": "humidity",
+             "type": "int"
+         }
+     ]
+ }
+
